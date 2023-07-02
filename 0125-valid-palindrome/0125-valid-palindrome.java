@@ -13,10 +13,10 @@ class Solution {
         
         int j = sb.length()-1;
         for(int i = 0;i<sb.length();i++){
-            if(sb.charAt(i) == sb.charAt(j)){
-                j--;
-            }else{
+            if(sb.charAt(i) != sb.charAt(j)){
                 return false;
+            }else{
+                j--;
             }
         }
         return true;
