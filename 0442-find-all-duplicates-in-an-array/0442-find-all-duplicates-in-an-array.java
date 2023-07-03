@@ -7,7 +7,7 @@ class Solution {
             int idx = Math.abs(nums[i])-1;
             
             if(nums[idx]<0){
-                arr.add(Math.abs(nums[i]));
+                arr.add(idx+1);
             }
             
             nums[idx] = -nums[idx];
