@@ -1,36 +1,33 @@
 class Solution {
     public int evalRPN(String[] tokens) {
-       Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<>();
         
-        for(String s : tokens){
-            if(s.equals("+")){
-                int temp1 = stack.pop();
+        for(String i : tokens){
+            if(i.equals("+")){
+                int temp = stack.pop();
                 int temp2 = stack.pop();
-                int sum = temp1+temp2;
+                int sum  = temp + temp2;
                 stack.push(sum);
-            }else if(s.equals("-")){
-                int temp1 = stack.pop();
+            }else if(i.equals("-")){
+                int temp = stack.pop();
                 int temp2 = stack.pop();
-                int minus = temp2-temp1;
-                stack.push(minus);
-            }else if(s.equals("*")){
-                int temp1 = stack.pop();
+                int sum  = temp2 - temp;
+                stack.push(sum);
+            }else if(i.equals("*")){
+                int temp = stack.pop();
                 int temp2 = stack.pop();
-                int multi = temp1*temp2;
-                stack.push(multi);
-            }else if(s.equals("/")){
-                int temp1 = stack.pop();
+                int sum  = temp * temp2;
+                stack.push(sum);
+            }else if(i.equals("/")){
+                int temp = stack.pop();
                 int temp2 = stack.pop();
-                int div = temp2/temp1;
-                stack.push(div);
+                int sum  = temp2 / temp;
+                stack.push(sum);
             }else{
-                int val = Integer.parseInt(s);
+                int val = Integer.parseInt(i);
                 stack.push(val);
             }
         }
-        if(!stack.isEmpty()){
-            return stack.pop();
-        }
-        return 0;
+        return stack.peek();
     }
 }
