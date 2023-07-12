@@ -2,24 +2,22 @@ class Solution {
     public boolean wordPattern(String pattern, String s) {
         HashMap<Character,String> map = new HashMap<>();
         
-        String[] words = s.split(" ");
+        String[] word = s.split(" ");
         
-        if(pattern.length() != words.length){
+        if(pattern.length() != word.length){
             return false;
         }
         
-        for(int i=0;i<pattern.length();i++){
-            char c = pattern.charAt(i);
-            
-            if(map.containsKey(c)){
-                if(!map.get(c).equals(words[i])){
+        for(int i =0;i<pattern.length();i++){
+            if(map.containsKey(pattern.charAt(i))){
+                if(!map.get(pattern.charAt(i)).equals(word[i])){
                     return false;
                 }
             }else{
-                if(map.containsValue(words[i])){
+                if(map.containsValue(word[i])){
                     return false;
                 }
-                map.put(c,words[i]);
+                map.put(pattern.charAt(i),word[i]);
             }
         }
         return true;
