@@ -1,11 +1,9 @@
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
-        
-        HashMap<String,List<String>> map = new HashMap<>();
+        HashMap<String, List<String>> map = new HashMap<>();
         
         for(String i : strs){
-            String freq = getFreq(i);
-            
+            String freq = getfreq(i);
             if(map.containsKey(freq)){
                 map.get(freq).add(i);
             }else{
@@ -13,24 +11,19 @@ class Solution {
                 strlist.add(i);
                 map.put(freq,strlist);
             }
-            
         }
         return new ArrayList<>(map.values());
-        
     }
     
-    private static String getFreq(String s){
+    private String getfreq(String s){
         StringBuilder sb = new StringBuilder();
+        int[] arr = new int[26];
         
-        int[] freq = new int[26];
-        
-        for(char i : s.toCharArray()){
-            freq[i-'a']++;
+        for(int i=0;i<s.length();i++){
+            arr[s.charAt(i)-'a']++;
         }
-        
         char c = 'a';
-        
-        for(int i : freq){
+        for(int i:arr){
             sb.append(c);
             sb.append(i);
             c++;
